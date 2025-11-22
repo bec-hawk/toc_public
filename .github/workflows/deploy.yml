@@ -2,9 +2,9 @@
 name: Deploy static content to Pages
 
 on:
-  # Runs on pushes targeting the default branch
+  # Runs on pushes to the Claude branch for testing, and main/master for production
   push:
-    branches: ['main', 'master']
+    branches: ['claude/claude-md-miaga7u3q0llyjfo-01NYMG4GvFWNsvfHWQx45WMB', 'main', 'master']
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:

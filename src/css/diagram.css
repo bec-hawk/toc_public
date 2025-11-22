@@ -1,0 +1,419 @@
+/* Diagram Container */
+.diagram {
+    overflow-x: auto;
+    padding: 20px 0;
+}
+
+.flow {
+    display: flex;
+    align-items: stretch;
+    min-width: 1600px;
+    gap: 35px;
+    position: relative;
+}
+
+/* Columns */
+.column {
+    flex: 1;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.column.dragging-over {
+    background-color: rgba(52, 152, 219, 0.1);
+}
+
+.column-header {
+    background: #2c3e50;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 6px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: text;
+    position: relative;
+}
+
+.column-header:hover {
+    background: #34495e;
+}
+
+.edit-mode .column-header::after {
+    content: '✏️';
+    position: absolute;
+    right: 10px;
+    font-size: 12px;
+}
+
+.column-controls {
+    display: none;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.edit-mode .column-controls {
+    display: flex;
+}
+
+/* Column-specific coloring */
+.activities { background: #f0f4ff; }
+.outputs { background: #f0fff4; }
+.near-outcomes { background: #fffaf0; }
+.intermediate-outcomes { background: #fff0f8; }
+.long-outcomes { background: #fff0f0; }
+.impact { background: #ffe0e0; }
+
+/* Stream Container */
+.stream-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+.stream-label {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 8px;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 4px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 8px 0 4px 0;
+    cursor: text;
+    position: relative;
+}
+
+.stream-label:hover {
+    opacity: 0.9;
+}
+
+.stream-label-controls {
+    display: none;
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    gap: 3px;
+}
+
+.edit-mode .stream-label-controls {
+    display: flex;
+}
+
+.stream-btn {
+    width: 18px;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    color: white;
+}
+
+.stream-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.edit-mode .stream-label::after {
+    content: '✏️';
+    position: absolute;
+    right: 8px;
+    font-size: 10px;
+}
+
+/* Boxes */
+.box {
+    background: #f8f9fa;
+    border: 2px solid #dee2e6;
+    border-radius: 6px;
+    padding: 10px;
+    position: relative;
+    transition: all 0.2s ease;
+    font-size: 13px;
+    cursor: default;
+}
+
+.box:hover {
+    background: #ffffff;
+    border-color: #6c757d;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+}
+
+.edit-mode .box {
+    cursor: move;
+}
+
+.box.dragging {
+    opacity: 0.5;
+}
+
+.box-controls {
+    display: none;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    gap: 3px;
+}
+
+.edit-mode .box-controls {
+    display: flex;
+}
+
+.box-btn {
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.box-btn-edit {
+    background: #3498db;
+    color: white;
+}
+
+.box-btn-edit:hover {
+    background: #2980b9;
+}
+
+.box-btn-delete {
+    background: #e74c3c;
+    color: white;
+}
+
+.box-btn-delete:hover {
+    background: #c0392b;
+}
+
+.box-btn-up,
+.box-btn-down {
+    background: #95a5a6;
+    color: white;
+    font-size: 10px;
+}
+
+.box-btn-up:hover,
+.box-btn-down:hover {
+    background: #7f8c8d;
+}
+
+.box-title {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 6px;
+    font-size: 13px;
+}
+
+.box-content {
+    color: #495057;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+/* Box Tags */
+.actor {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffc107;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 500;
+    display: inline-block;
+    margin: 3px 0;
+}
+
+.blocker {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 500;
+    display: inline-block;
+    margin: 3px 0;
+}
+
+.resource {
+    background: #d1ecf1;
+    color: #0c5460;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    margin: 2px 0;
+    display: inline-block;
+}
+
+.assumption {
+    background: #e2e3e5;
+    color: #383d41;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-style: italic;
+    margin-top: 4px;
+}
+
+/* Impact Column Special Styling */
+.impact .box {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    border: none;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+}
+
+/* Add Box Zone */
+.add-box-zone {
+    display: none;
+    padding: 15px;
+    text-align: center;
+    border: 2px dashed #bdc3c7;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #7f8c8d;
+    font-size: 12px;
+}
+
+.edit-mode .add-box-zone {
+    display: block;
+}
+
+.add-box-zone:hover {
+    background: rgba(52, 152, 219, 0.1);
+    border-color: #3498db;
+    color: #3498db;
+}
+
+/* Change Highlighting */
+.highlight-added {
+    outline: 3px solid #27ae60 !important;
+    outline-offset: 2px;
+    position: relative;
+}
+
+.highlight-added::before {
+    content: "ADDED";
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #27ae60;
+    color: white;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 3px;
+    z-index: 10;
+}
+
+.highlight-modified {
+    outline: 3px solid #f39c12 !important;
+    outline-offset: 2px;
+    position: relative;
+}
+
+.highlight-modified::before {
+    content: "MODIFIED";
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #f39c12;
+    color: white;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 3px;
+    z-index: 10;
+}
+
+.highlight-removed {
+    outline: 3px solid #e74c3c !important;
+    outline-offset: 2px;
+    opacity: 0.6;
+    position: relative;
+}
+
+.highlight-removed::before {
+    content: "REMOVED";
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #e74c3c;
+    color: white;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 3px;
+    z-index: 10;
+}
+
+/* Placeholder for added items when viewing original */
+.placeholder-added {
+    opacity: 0.3;
+    pointer-events: none;
+    filter: grayscale(100%);
+}
+
+/* Allow interactions with placeholder items in edit mode */
+.edit-mode .placeholder-added {
+    pointer-events: auto;
+}
+
+.placeholder-added::after {
+    content: "Not in original";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(149, 165, 166, 0.9);
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    z-index: 5;
+    white-space: nowrap;
+}
+
+/* Deleted items shown at bottom */
+.deleted-items-container {
+    margin-top: 30px;
+    padding: 20px;
+    background: #fef5e7;
+    border-left: 4px solid #e74c3c;
+    border-radius: 4px;
+}
+
+.deleted-items-container h4 {
+    margin: 0 0 15px 0;
+    color: #c0392b;
+    font-size: 14px;
+}

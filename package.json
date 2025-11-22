@@ -1,0 +1,17 @@
+{
+  "name": "theory-of-change-builder",
+  "version": "1.0.0",
+  "description": "Theory of Change - Interactive Diagram Builder",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  },
+  "dependencies": {
+    "html-to-image": "^1.11.13"
+  }
+}

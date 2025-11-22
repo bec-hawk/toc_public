@@ -1,0 +1,179 @@
+/* Edit Controls */
+.edit-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #ecf0f1;
+    border-radius: 8px;
+    flex-wrap: wrap;
+}
+
+.toggle-edit {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggle-edit.active {
+    background: #e74c3c;
+    color: white;
+}
+
+.toggle-edit.inactive {
+    background: #95a5a6;
+    color: white;
+}
+
+.edit-status {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.save-indicator {
+    font-size: 12px;
+    color: #27ae60;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.save-indicator.saving {
+    color: #f39c12;
+}
+
+.save-tools {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn-download,
+.btn-png,
+.btn-export,
+.btn-import,
+.btn-clear {
+    padding: 8px 15px;
+    font-size: 12px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-download {
+    background: #3498db;
+    color: white;
+}
+
+.btn-download:hover {
+    background: #2980b9;
+}
+
+.btn-png {
+    background: #2ecc71;
+    color: white;
+}
+
+.btn-png:hover {
+    background: #27ae60;
+}
+
+.btn-png:disabled {
+    background: #95a5a6;
+    cursor: not-allowed;
+}
+
+.btn-export {
+    background: #9b59b6;
+    color: white;
+}
+
+.btn-export:hover {
+    background: #8e44ad;
+}
+
+.btn-import {
+    background: #16a085;
+    color: white;
+}
+
+.btn-import:hover {
+    background: #138d75;
+}
+
+.btn-clear {
+    background: #e67e22;
+    color: white;
+}
+
+.btn-clear:hover {
+    background: #d35400;
+}
+
+.btn-changes {
+    background: #8e44ad;
+    color: white;
+}
+
+.btn-changes:hover {
+    background: #7d3c98;
+}
+
+.btn-changes.active {
+    background: #6c3483;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.btn-original {
+    background: #16a085;
+    color: white;
+}
+
+.btn-original:hover {
+    background: #138d75;
+}
+
+.btn-original.active {
+    background: #117a65;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+#importFile {
+    display: none;
+}
+
+.btn {
+    padding: 5px 10px;
+    font-size: 11px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-add {
+    background: #27ae60;
+    color: white;
+}
+
+.btn-add:hover {
+    background: #229954;
+}
+
+.btn-remove {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-remove:hover {
+    background: #c0392b;
+}

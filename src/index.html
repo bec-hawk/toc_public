@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theory of Change - Interactive Builder</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Theory of Change Builder</h1>
+        <div class="subtitle">Create and visualize your strategic pathway from activities to impact</div>
+
+        <div class="edit-controls">
+            <button class="toggle-edit inactive" id="toggleEdit">Enable Edit Mode</button>
+            <span class="edit-status">Status: <span id="editStatus">Viewing</span></span>
+            <button class="btn btn-add" id="addColumn" style="display: none;">+ Add Column</button>
+
+            <div class="save-tools">
+                <button class="btn-download" id="downloadHTML">💾 Download HTML</button>
+                <button class="btn-png" id="downloadPNG">🖼️ Download PNG</button>
+                <button class="btn-export" id="exportJSON">📤 Export JSON</button>
+                <button class="btn-import" id="importButton">📥 Import JSON</button>
+                <button class="btn-changes" id="highlightChanges">🔍 Highlight Changes</button>
+                <button class="btn-original" id="viewOriginal">👁️ View Original</button>
+                <button class="btn-clear" id="clearStorage">🗑️ Clear Saved</button>
+                <input type="file" id="importFile" accept=".json">
+            </div>
+
+            <span class="save-indicator" id="saveIndicator">
+                <span id="saveIcon">✓</span>
+                <span id="saveText">Auto-saved</span>
+            </span>
+        </div>
+
+        <div class="diagram">
+            <div class="flow" id="flow">
+                <!-- Columns will be loaded from localStorage or default content -->
+            </div>
+        </div>
+
+        <div style="margin-top: 20px; padding: 15px; background: #e8f8f5; border-left: 4px solid #20c997; border-radius: 4px;">
+            <h3 style="color: #20c997; margin-bottom: 8px; font-size: 14px;">Legend</h3>
+            <div style="font-size: 12px; line-height: 1.6;">
+                <span class="actor">Yellow boxes</span> = Key actors or stakeholders<br>
+                <span class="blocker">Red boxes</span> = Potential blockers or challenges<br>
+                <span class="resource">Blue text</span> = Resources or capabilities needed<br>
+                <span class="assumption">Gray text</span> = Assumptions or preconditions
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">Edit Box</div>
+            <form id="editForm">
+                <div class="form-group">
+                    <label for="boxTitle">Title:</label>
+                    <input type="text" id="boxTitle" name="boxTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="boxContent">Content:</label>
+                    <textarea id="boxContent" name="boxContent" placeholder="Use HTML tags for formatting (e.g., &lt;br&gt; for line breaks, &lt;span class='actor'&gt;Actor: ...&lt;/span&gt;)"></textarea>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" onclick="window.closeModal()">Cancel</button>
+                    <button type="submit" class="btn-save">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js"></script>
+</body>
+</html>
